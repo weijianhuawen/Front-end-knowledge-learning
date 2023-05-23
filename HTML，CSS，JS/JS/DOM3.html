@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM学习3</title>
+</head>
+<body onload="load()">
+
+    <h1>DOM学习3.....</h1>
+    <h2>事件控制</h2>
+
+    <form action="" style="text-align: center;" onsubmit="subfn()">
+        <input type="text" name="username" onblur="bfn()" onfocus="ffn()" onkeydown="kfn()">
+        
+        <input id="b1" type="submit" value="提交">
+
+        <input id="b1" type="button" value="单击事件" onclick="fn1()">
+    </form>  
+
+    <br><br><br>
+
+    <table width="800px" border="1" cellspacing="0" align="center" onmouseover="over()" onmouseout="out()">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>分数</th>
+            <th>评语</th>
+        </tr>
+        <tr align="center">
+            <td>001</td>
+            <td>张三</td>
+            <td>90</td>
+            <td>很优秀</td>
+        </tr>
+        <tr align="center">
+            <td>002</td>
+            <td>李四</td>
+            <td>92</td>
+            <td>优秀</td>
+        </tr>
+    </table>
+
+</body>
+
+<script>
+    var load = function() {
+        console.log("页面加载完成！");
+    }
+    var fn1 = function() {
+        console.log("点击按钮，提交表单，发送请求。")
+    }
+    var bfn = function() {
+        console.log("输入离开焦点（输入框）！");
+    }
+    var ffn = function() {
+        console.log("输入聚焦（光标在输入框中）！");
+    }
+    var kfn = function() {
+        console.log("正在输入...");
+    }
+    var over = function() {
+        console.log("鼠标进入目标区域...");
+    }
+    var out = function() {
+        console.log("鼠标离开目标区域...");
+    }
+    var subfn = function() {
+        console.log("表单被提交了...");
+    }
+</script>
+</html>

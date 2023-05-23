@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM学习4</title>
+</head>
+<body>
+    <img id="light" src="img/off.gif"> <br>
+
+    <input type="button" value="点亮" onclick="on()"> 
+    <input type="button"  value="熄灭" onclick="off()">
+
+    <br> <br>
+
+    <input type="text" id="name" value="ABCDEFGH" onfocus="lower()" onblur="upper()">
+    <br> <br>
+
+    <input type="checkbox" name="hobby"> 吃饭
+    <input type="checkbox" name="hobby"> 睡觉
+    <input type="checkbox" name="hobby"> 打豆豆
+    <br>
+
+    <input type="button" value="全选" onclick="checkAll()"> 
+    <input type="button" value="反选" onclick="reverse()">
+    
+</body>
+
+<script>
+    //点亮灯泡
+    var light = document.getElementById("light");
+    var on = function() {
+        light.src = "img/on.gif";
+    }
+    var off = function() {
+        light.src = "img/off.gif";
+    }
+    //改成大写
+    var input = document.getElementById("name");
+    var lower = function() {
+        input.value = input.value.toLowerCase();
+    }
+    var upper = function() {
+        input.value = input.value.toUpperCase();
+    }
+    //全选
+    var bts = document.getElementsByName("hobby");
+    var checkAll = function() {
+        for (var i = 0; i < bts.length; i++) {
+            bts[i].checked = true;
+        }
+    }
+    //全不选
+    var reverse = function() {
+        for (var i = 0; i < bts.length; i++) {
+            bts[i].checked = false;
+        }
+    }
+</script>
+</html>

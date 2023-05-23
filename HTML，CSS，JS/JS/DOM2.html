@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM学习2</title>
+</head>
+<body>
+    <img id="h1" src="img/off.gif">  <br><br>
+
+    <div class="cls">大电灯泡</div>   <br>
+    <div class="cls">这真的是一个大电灯泡</div>  <br>
+    <p>当代大学生生活：</p>
+    <label for="">
+        <input type="checkbox" name="hobby"> 吃饭
+    </label>
+    <label for="">
+        <input type="checkbox" name="hobby"> 睡觉
+    </label>
+    <label for="">
+        <input type="checkbox" name="hobby"> 游戏
+    </label>
+    
+    
+</body>
+
+<script>
+    //实现灯泡明暗切换
+    var img = document.getElementById("h1");
+    //表示开关状态
+    var flag = false;
+    img.onclick = function() {
+        
+        if (!flag) {
+            img.src = "img/on.gif";
+            flag = true;
+        } else {
+            img.src = "img/off.gif";
+            flag = false;
+        }
+        
+    }
+    //在div标签后加上very good!
+    var divs = document.getElementsByClassName("cls");
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].innerHTML += "<font color='red'> very good!</font>";
+    }
+
+    //将所以复选框选中
+    var checks = document.getElementsByName("hobby");
+    for (var i = 0; i < checks.length; i++) {
+        checks[i].checked = true;
+    }
+</script>
+</html>
