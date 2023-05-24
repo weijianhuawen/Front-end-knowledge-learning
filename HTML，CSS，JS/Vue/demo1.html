@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue学习：常见指令</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue常用指令：bind, model, on</h1>
+    <p>v-bind:为HTML标签绑定属性值，如设置 href , css样式等</p>
+    <p>v-model:在表单元素上创建双向数据绑定</p>
+    <p>v-on:为HTML标签绑定事件</p>
+
+    <div class="app" id="app">
+        <div>v-bind指令的使用：</div>
+        <a v-bind:href="url">点击打开百度</a>
+        <br>
+        <hr>
+        <div>v-model指令的使用：</div>
+        <input type="text" v-model="message"> 输入框的值为：{{message}}
+        <br><br>
+        <hr>
+        <div>v-on指令的使用：</div>
+        <input type="button" value="点我以下" v-on:click="handle()">
+        <input type="button" value="也点我以下" @click="handle()">
+        <br><br>
+        <hr>
+
+        <div>逻辑指令v-if, v-else, v-else-if</div>
+        请输入你的年龄：<input type="number" v-model="age">
+        <span v-if="age < 0">你还没有出生哟（年龄小于0岁）</span>
+        <span v-else-if="age <= 12">你是以为充满童真的小屁孩（年龄在0~12岁之间）</span>
+        <span v-else-if="age <= 24">你是一位帅气美丽的少年（少女）（年龄在13~24岁之间）</span>
+        <span v-else-if="age <= 35">你正处在精力最充沛的时期（年龄在25~35岁之间）</span>
+        <span v-else-if="age <= 50">我还能再战一百年！（年龄在36~50岁之间）</span>
+        <span v-else-if="age <= 200">老了！老了！（年龄大于50岁小于200岁）</span>
+        <span v-else>啊！妖怪！（年龄大于200岁）</span>
+        <br><br>
+        <hr>
+        <div>通过改变css属性显示与隐藏 v-show</div>
+        请输入你的年龄：<input type="number" v-model="age">
+        <span v-show="age < 0">你还没有出生哟（年龄小于0岁）</span>
+        <span v-show="age >= 0 && age <= 12">你是以为充满童真的小屁孩（年龄在0~12岁之间）</span>
+        <span v-show="age >= 13 && age <= 24">你是一位帅气美丽的少年（少女）（年龄在13~24岁之间）</span>
+        <span v-show="age >= 25 && age <= 35">你正处在精力最充沛的时期（年龄在25~35岁之间）</span>
+        <span v-show="age >= 36 && age <= 50">我还能再战一百年！（年龄在36~50岁之间）</span>
+        <span v-show="age >= 50 && age <= 200">老了！老了！（年龄大于50岁小于200岁）</span>
+        <span v-show="age > 200">啊！妖怪！（年龄大于200岁）</span>
+        <br><br>
+        <hr>
+        <div>Vue指令：v-for 遍历数组/集合</div>
+        <div v-for="addr in addrs">{{addr}}</div>
+        <hr>
+        <p>带下标：</p>
+        <div v-for="(addr, index) in addrs">{{index + 1}} : {{addr}}</div>
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "v-model:https://www.baidu.com",
+            url: "https://www.baidu.com"
+        },
+        methods: {
+            handle: function() {
+                alert("你的思想很危险！！！");
+            }
+        },
+        data: {
+            age: "18",
+            addrs: ["北京", "上海", "厦门", "合肥", "苏州", "广州", "深圳", "长沙"]
+        }
+    })
+</script>
+</html>

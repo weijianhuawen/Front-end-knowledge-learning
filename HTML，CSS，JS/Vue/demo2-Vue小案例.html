@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue上手小案例</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue小案例</h1>
+
+    <div id="app">
+        <h2 style="text-align: center;">某班级成绩表</h2>
+        <table border="1px" cellspacing="0" width="60%" align="center">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>成绩</th>
+                <th>等级</th>
+            </tr>
+            <tr align="center" v-for="(user, index) in users">
+                <td>{{index + 1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td v-if="user.gender == 1">男</td>
+                <td v-else-if="user.gender == 2">女</td>
+                <td v-else>未知</td>
+                <td>{{user.score}}</td>
+                <td v-if="user.score >= 96">A+</td>
+                <td v-else-if="user.score >= 90">A</td>
+                <td v-else-if="user.score >= 86">A-</td>
+                <td v-else-if="user.score >= 83">B+</td>
+                <td v-else-if="user.score >= 80">B</td>
+                <td v-else-if="user.score >= 76">B-</td>
+                <td v-else-if="user.score >= 70">C</td>
+                <td v-else-if="user.score >= 60">D</td>
+                <td v-else style="color: red;">E(不及格)</td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            users: [{
+                name: "Tom",
+                age: 20,
+                gender: 1,
+                score: 78
+            },{
+                name: "Rose",
+                age: 18,
+                gender: 2,
+                score: 86
+            },{
+                name: "Jerry",
+                age: 26,
+                gender: 1,
+                score: 90
+            },{
+                name: "Tony",
+                age: 30,
+                gender: 1,
+                score: 52
+            }, {
+                name: "小卷",
+                age: 12,
+                gender: 2,
+                score: 98
+            }]
+        },
+        methods: {
+            
+        }
+    })
+</script>
+</html>

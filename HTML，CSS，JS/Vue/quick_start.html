@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue快速入门</title>
+    <!-- //0.引入vue文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue快速入门</h1>
+    <div id="app">
+        <h2>请输入：</h2>
+        <!-- 绑定message模块 -->
+        <input type="text" v-model="message"> 
+        <br>
+        <p>展示输入框中的数据：</p>
+        <!-- 通过{{}}运算符获取message的值 -->
+        {{ message }}
+    </div>
+    
+    
+</body>
+<script>
+    //1.定义Vue对象
+    new Vue({
+        //2.选择的标签 el
+        el: "#app",
+        //3.数据data
+        data: {
+            //5.定义属性
+            message: "Hello Vue!"
+        },
+        //4.方法
+        methods: {
+            //6.定义方法
+        }
+    })
+</script>
+</html>
