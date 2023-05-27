@@ -32,6 +32,7 @@
         </el-aside>
 
         <el-main>
+          <!-- 查询栏 -->
           <el-form :inline="true" :model="searchForm" class="demo-form-inline">
             <el-form-item label="姓名">
               <el-input v-model="searchForm.name" placeholder="姓名"></el-input>
@@ -56,6 +57,58 @@
               <el-button type="primary" @click="onSubmit">查询</el-button>
             </el-form-item>
           </el-form>
+          <!-- 新增 -->
+          <!-- 按钮 -->
+          <el-button
+            type="primary"
+            icon="el-icon-plus"
+            @click="dialogAddEmpVisible = true"
+            >新增员工</el-button
+          >
+          <el-dialog
+            title="员工信息"
+            :visible.sync="dialogAddEmpVisible"
+          >
+            <el-form
+              ref="addEmpForm"
+              :model="addEmpForm"
+              label-width="80px"
+              class="demo-ruleForm"
+            >
+              <el-form-item
+                label="用户名"
+                prop="username"
+                :rules="[
+                  {
+                    required: true,
+                    message: '用户名不能为空',
+                  },
+                ]"
+              >
+                <el-input v-model="addEmpForm.username" value></el-input>
+              </el-form-item>
+              <el-form-item
+                label="姓名"
+                prop="name"
+                :rules="[
+                  {
+                    required: true,
+                    message: '姓名不能为空',
+                  },
+                ]"
+              >
+                <el-input v-model="addEmpForm.name" value></el-input>
+              </el-form-item>
+             
+              <el-form-item id="createDept">
+                <el-button type="primary" @click="onSubmit('departForm')"
+                  >立即创建</el-button
+                >
+                <el-button @click="onCancel">取消</el-button>
+              </el-form-item>
+            </el-form>
+          </el-dialog>
+          <!-- 表格 -->
           <el-table :data="tableData" border>
             <el-table-column
               prop="name"
@@ -132,6 +185,15 @@ export default {
         gender: "",
       },
       value: [],
+      addEmpForm: {
+        username: '',
+        name: '',
+        gender: '',
+        image: '',
+        post: '',
+        joinDate: '',
+        depart: ''
+      }
     };
   },
   methods: {
